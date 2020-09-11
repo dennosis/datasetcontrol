@@ -1,0 +1,119 @@
+
+.TextLabel{
+    display: none !important;
+}
+
+.app .Door {
+    fill: darkorange;
+    /* stroke: none */
+}
+/*
+.Door .Panel{
+    display: none;
+}
+*/
+.app .Window{
+    fill: rgb(238, 255, 0);
+    /* stroke: none!important */
+}
+/*
+.Window .Panel{
+    display: none;
+}
+*/
+.app .Railing{
+    fill: #696969
+}
+
+
+.app .Space.Room{
+    fill: #1d8309
+}
+
+.app .Space.Bath{
+    fill: #095c83
+}
+
+.app .Space.Entry{
+    fill: rgb(0, 255, 213);
+}
+
+.app .Space.Entry.Lobby{
+    fill: rgb(0, 255, 213);
+}
+
+.app .Space.LivingRoom{
+    fill: rgb(176, 95, 252);
+}
+
+.app .Space.Bedroom{
+    fill: rgb(252, 95, 155);
+}
+
+.app .Space.Kitchen{
+    fill: rgb(95, 252, 103);
+}
+.app .Space.Garage{
+    fill: rgb(141, 45, 90);
+
+}
+.app .Space.Storage{
+    fill: rgb(184, 252, 95);
+}
+
+.app .Space.Outdoor{
+    fill: rgb(72, 39, 116);
+}
+
+.app .Space.UserDefined{
+    fill: rgb(97, 155, 119);
+
+}
+.app .Space.DraughtLobby{
+    fill: rgb(122, 97, 155);
+}
+
+.app .Space.Alcove{
+    fill: rgb(49, 192, 73);
+}
+
+.app .Space.Utility.Laundry{
+    fill: rgb(49, 143, 127);
+}
+
+.app .Space.Dining{
+    fill: rgb(143, 75, 101);
+}
+
+.app .Space.Closet.WalkIn{
+    fill: #65945c
+}
+
+
+.app .Space.TechnicalRoom{
+    fill: #244b34
+}
+
+.app .Space.Den.Fireplace{
+    fill: rgb(141, 45, 45);
+}
+
+.app .Space.DressingRoom{
+    fill: rgb(126, 93, 170);
+}
+
+.app .Space.Sauna{
+    fill: rgb(190, 50, 50);
+}
+
+.app .Space.Office{
+    fill: rgb(11, 129, 110);
+}
+
+.app .Space.RecreationRoom{
+    fill: rgb(101, 211, 169);
+}
+
+.app .Space.Bar{
+    fill: #58884e
+}
