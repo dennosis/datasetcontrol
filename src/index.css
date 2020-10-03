@@ -1,119 +1,189 @@
 
+
+.page-item.active .page-link{
+    background-color: #6c757d !important;
+    border-color: #6c757d  !important;
+    color: #fff !important;
+}
+.page-item .page-link{
+    color: #6c757d !important;
+    border-color: #6c757d !important;
+}
+
+
+
 .TextLabel{
     display: none !important;
 }
+.color .Column.Rectangle,
+.color .Column.Circle
+{
+    display: none;
+}
 
-.app .Door {
+
+/* classes show or hide das items do plano */
+
+
+.openings .Door,
+.openings .Window{
+    stroke: none !important
+}
+.openings .Door .Panel,
+.openings .Window .Panel
+{
+    display: none !important;
+}
+
+
+
+.furniture .FixedFurniture.CoatCloset,
+.furniture .FixedFurniture.Closet,
+.furniture .FixedFurniture.ShowerCab,
+.furniture .FixedFurniture.ElectricalAppliance,
+.furniture .FixedFurniture.Toilet,
+.furniture .FixedFurniture.BaseCabinet,
+.furniture .FixedFurniture.Shower,
+.furniture .FixedFurniture.Sink,
+.furniture .FixedFurniture.WallCabinet,
+.furniture .FixedFurniture.DoubleSink,
+.furniture .FixedFurniture.FireplaceCorner,
+.furniture .FixedFurniture.Fireplace,
+.furniture .FixedFurniture.PlaceForFireplace,
+.furniture .FixedFurniture.Chimney,
+.furniture .FixedFurniture.RoundSink,
+.furniture .FixedFurniture.DoubleSinkRight,
+.furniture .FixedFurniture.Housing,
+.furniture .FixedFurniture.WoodStove,
+.furniture .FixedFurniture.SaunaBenchMid,
+.furniture .FixedFurniture.SaunaBenchHigh,
+.furniture .FixedFurniture.SaunaBenchLow,
+.furniture .FixedFurniture.ShowerScreen,
+.furniture .FixedFurniture.SaunaBench,
+.furniture .FixedFurniture.Jacuzzi,
+.furniture .FixedFurniture.CornerSink,
+.furniture .FixedFurniture.CoatRack,
+.furniture .FixedFurniture.Bathtub
+{
+    display: none;
+}
+
+
+
+
+.color .Door {
     fill: darkorange;
-    /* stroke: none */
 }
-/*
-.Door .Panel{
-    display: none;
-}
-*/
-.app .Window{
+.color .Window{
     fill: rgb(238, 255, 0);
-    /* stroke: none!important */
 }
-/*
-.Window .Panel{
-    display: none;
+.color .Railing{
+    fill: #000000
 }
-*/
-.app .Railing{
-    fill: #696969
+.color .Stairs{
+    fill: rgb(255, 102, 0)
 }
 
 
-.app .Space.Room{
+/* spaces */
+.color .Space.Room{
     fill: #1d8309
 }
-
-.app .Space.Bath{
+.color .Space.Bath{
     fill: #095c83
 }
-
-.app .Space.Entry{
+.color .Space.Entry{
     fill: rgb(0, 255, 213);
 }
-
-.app .Space.Entry.Lobby{
+.color .Space.Entry.Lobby{
     fill: rgb(0, 255, 213);
 }
-
-.app .Space.LivingRoom{
+.color .Space.LivingRoom{
     fill: rgb(176, 95, 252);
 }
-
-.app .Space.Bedroom{
+.color .Space.Bedroom{
     fill: rgb(252, 95, 155);
 }
-
-.app .Space.Kitchen{
+.color .Space.Kitchen{
     fill: rgb(95, 252, 103);
 }
-.app .Space.Garage{
+.color .Space.Garage{
     fill: rgb(141, 45, 90);
-
 }
-.app .Space.Storage{
+.color .Space.Storage{
     fill: rgb(184, 252, 95);
 }
-
-.app .Space.Outdoor{
+.color .Space.Outdoor{
     fill: rgb(72, 39, 116);
 }
-
-.app .Space.UserDefined{
+.color .Space.UserDefined{
     fill: rgb(97, 155, 119);
-
 }
-.app .Space.DraughtLobby{
-    fill: rgb(122, 97, 155);
+.color .Space.DraughtLobby{
+    fill: rgb(93, 84, 105);
 }
-
-.app .Space.Alcove{
+.color .Space.Alcove{
     fill: rgb(49, 192, 73);
 }
-
-.app .Space.Utility.Laundry{
+.color .Space.Utility.Laundry{
     fill: rgb(49, 143, 127);
 }
-
-.app .Space.Dining{
+.color .Space.Dining{
     fill: rgb(143, 75, 101);
 }
-
-.app .Space.Closet.WalkIn{
+.color .Space.Closet.WalkIn{
     fill: #65945c
 }
-
-
-.app .Space.TechnicalRoom{
+.color .Space.TechnicalRoom{
     fill: #244b34
 }
-
-.app .Space.Den.Fireplace{
+.color .Space.Den.Fireplace{
     fill: rgb(141, 45, 45);
 }
-
-.app .Space.DressingRoom{
+.color .Space.DressingRoom{
     fill: rgb(126, 93, 170);
 }
-
-.app .Space.Sauna{
+.color .Space.Sauna{
     fill: rgb(190, 50, 50);
 }
-
-.app .Space.Office{
+.color .Space.Office{
     fill: rgb(11, 129, 110);
 }
-
-.app .Space.RecreationRoom{
+.color .Space.RecreationRoom{
     fill: rgb(101, 211, 169);
 }
-
-.app .Space.Bar{
+.color .Space.Bar{
     fill: #58884e
+}
+.color .Space.Library{
+    fill: #5c948b
+}
+.color .Space.CarPort{
+    fill: rgb(141, 45, 90)
+}
+.color .Space.Undefined{
+    fill: rgb(255, 255, 255)
+}
+
+
+/** segmentation */
+.segmentation .Space,
+.segmentation .Threshold,
+.segmentation .Stairs,
+.segmentation .Door,
+.segmentation .Window{
+    stroke: #000 !important;
+    fill: #000 !important;
+    stroke-width: 2 !important
+}
+.segmentation .Wall{
+    stroke: #000 !important;
+    fill: #000 !important;
+    stroke-width: 1 !important
+}
+.segmentation .WalkinLine,
+.segmentation .FixedFurniture,
+.segmentation .Column.Rectangle,
+.segmentation .Column.Circle{
+    display: none !important;
 }
