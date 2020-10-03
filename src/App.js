@@ -100,7 +100,7 @@ function App() {
                 if(saveAllMode && !saving){
                     if(index < models.length){
                         setSaving(true)
-                        saveModel(descriptionObj(models[index].path),                   
+                        saveModel(descriptionObj(description.path),                   
                             saveApi,
                             saveImg,
                             ()=>{
@@ -139,60 +139,64 @@ function App() {
         saveImg
     ]);
 
-    return (
-        <Container className={style.join(' ')}>
-            <Control
-                index={index}
-                setIndex={(index)=>{updateUrl(index, models.length); setDescriptionIsError(false); }}
-                length={models.length}
-                color={color}
-                setColor={setColor}
-                furniture={furniture}
-                setFurniture={setFurniture}
-                openings={openings}
-                setOpenings={setOpenings}
-                segmentation={segmentation}
-                setSegmentation={setSegmentation}
-                saveApi = {saveApi}
-                setSaveApi = {setSaveApi}
-                saveImg = {saveImg} 
-                setSaveImg = {setSaveImg}
 
-                saveModel={() => saveModel(descriptionObj(models[index].path),saveApi,saveImg)}
-                saveAllModel={()=>saveAllModel(models.length)}
+    if(!description.name)
+        return null
+    else
+        return (
+            <Container className={style.join(' ')}>
+                <Control
+                    index={index}
+                    setIndex={(index)=>{updateUrl(index, models.length); setDescriptionIsError(false); }}
+                    length={models.length}
+                    color={color}
+                    setColor={setColor}
+                    furniture={furniture}
+                    setFurniture={setFurniture}
+                    openings={openings}
+                    setOpenings={setOpenings}
+                    segmentation={segmentation}
+                    setSegmentation={setSegmentation}
+                    saveApi = {saveApi}
+                    setSaveApi = {setSaveApi}
+                    saveImg = {saveImg} 
+                    setSaveImg = {setSaveImg}
 
-            />
-            { 
-                description &&
-                <section className="p-3">
-                    <h2>name: {description.name}</h2>
-                    <h3>dimensions: {`${description.width}m x ${description.height}m`}</h3>
-                </section>
-            }
-            <div className="d-flex">
-                {
+                    saveModel={() => saveModel(descriptionObj(description.path),saveApi,saveImg)}
+                    saveAllModel={()=>saveAllModel(models.length)}
+
+                />
+                { 
                     description &&
-                    <section className="p-3" style={{ minWidth: '500px' }}>
-                        {
-                            description.spaces &&
-                            description.spaces.map((space, index) => (
-                                <h6 key={index} className="d-flex align-items-end">
-                                    <svg viewBox="0 0 20 20" className="mr-1" style={{ width: '20px', height: '20px' }} ><g className={`${(space.class).replaceAll('.', ' ')}`} stroke="#000000" style={{ fillOpacity: 1, strokeWidth: 2, strokeOpacity: 1 }}><rect x="0" y="0" width="100%" height="100%" /></g></svg>
-                                    {`${space.name}_${space.index}: area(${space.area}m²) max(${space.width}m x ${space.height}m) pos(${space.horizontally},${space.vertically})`}
-                                </h6>
-                            ))
-                        }
+                    <section className="p-3">
+                        <h2>name: {description.name}</h2>
+                        <h3>dimensions: {`${description.width}m x ${description.height}m`}</h3>
                     </section>
                 }
-                <section id="model" className="p-5">
-                    <div id="plain">
+                <div className="d-flex">
+                    {
+                        description &&
+                        <section className="p-3" style={{ minWidth: '500px' }}>
+                            {
+                                description.spaces &&
+                                description.spaces.map((space, index) => (
+                                    <h6 key={index} className="d-flex align-items-end">
+                                        <svg viewBox="0 0 20 20" className="mr-1" style={{ width: '20px', height: '20px' }} ><g className={`${(space.class).replaceAll('.', ' ')}`} stroke="#000000" style={{ fillOpacity: 1, strokeWidth: 2, strokeOpacity: 1 }}><rect x="0" y="0" width="100%" height="100%" /></g></svg>
+                                        {`${space.name}_${space.index}: area(${space.area}m²) max(${space.width}m x ${space.height}m) pos(${space.horizontally},${space.vertically})`}
+                                    </h6>
+                                ))
+                            }
+                        </section>
+                    }
+                    <section id="model" className="p-5">
+                        <div id="plain">
 
-                    </div>
-                </section>
-            </div>
-        </Container>
+                        </div>
+                    </section>
+                </div>
+            </Container>
 
-    );
+        );
 }
 
 export default App;

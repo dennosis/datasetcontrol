@@ -13,7 +13,6 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route path="/:indexRouter" component={App}/>
-
       </Switch>
     </Router>
   </React.StrictMode>,

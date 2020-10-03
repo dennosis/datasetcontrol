@@ -175,7 +175,7 @@ export const saveModel=async(descriptionObj,saveApi,saveImg,afterSave=()=>{})=>{
     if(saveImg){        
         await domtoimage.toBlob(document.getElementById('plain'))
         .then(async (blob)=>{
-            const name = descriptionObj ? descriptionObj.id : ""
+            const name = descriptionObj ? descriptionObj.name : ""
             await saveAs(blob, `${name}.png`);
         })
     }
