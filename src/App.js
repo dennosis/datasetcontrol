@@ -27,8 +27,8 @@ function App() {
     const [saveAllModels, setSaveAllModels] = useState(false);
 
     const [color, setColor] = useState(true);
-    const [furniture, setFurniture] = useState(false);
-    const [openings, setOpenings] = useState(false);
+    const [furniture, setFurniture] = useState(true);
+    const [openings, setOpenings] = useState(true);
     const [segmentation, setSegmentation] = useState(false);
     const [saveApi, setSaveApi] = useState(true);
     const [saveImg, setSaveImg] = useState(false);

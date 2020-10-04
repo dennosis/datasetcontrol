@@ -64,6 +64,7 @@
 .furniture .FixedFurniture.CornerSink,
 .furniture .FixedFurniture.CoatRack,
 .furniture .FixedFurniture.Bathtub
+.furniture .FixedFurniture.FireplaceRound
 {
     display: none;
 }
