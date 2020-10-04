@@ -55,13 +55,13 @@ export const descriptionObj = (path, isValid) => {
 
 
         let isValidCheck
-        if(isValid===undefined)
-            if(spaces.filter((space)=>space.name.includes('Undefined')).length > 2)
+        //if(isValid===undefined)
+            if(spaces.filter((space)=>space.name.includes('undefined')).length > 2)
                 isValidCheck = false
             else
                 isValidCheck = true
-        else
-            isValidCheck = isValid
+        //else
+        //    isValidCheck = isValid
 
 
         const description = {
