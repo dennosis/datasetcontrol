@@ -9,7 +9,6 @@ import { Control } from './Control.js'
 import { descriptionObj, saveModel, setModelSvgDOM, validatePositiveNumber } from './utils.js'
 
 
-
 function App() {
    
     const history = useHistory()
@@ -74,8 +73,6 @@ function App() {
                     setModelsError(true)
                 }
             ).finally(()=>updateUrl())
-            
-
         }
         
         if(models.length){
@@ -162,8 +159,16 @@ function App() {
                     saveImg = {saveImg} 
                     setSaveImg = {setSaveImg}
 
-                    saveModel={() => saveModel(descriptionObj(description.path),saveApi,saveImg)}
-                    saveAllModel={()=>saveAllModel(models.length)}
+                    setIsValid={(isValid)=>setDescription({...description, isValid})}
+                    isValid={description.isValid}
+
+                    saveModel={() => {
+                        const descriptionUpdated = descriptionObj(description.path, description.isValid)
+                        saveModel(descriptionUpdated,saveApi,saveImg)
+                        setDescription({...description,...descriptionUpdated})
+                    }}
+
+                    saveAllModel={()=>saveAllModel()}
 
                 />
                 { 

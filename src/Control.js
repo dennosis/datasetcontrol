@@ -4,32 +4,39 @@ import { Button, Container, Row, Col, ButtonGroup} from 'reactstrap';
 
 import { GenericPagination } from './GenericPagination'
 
-export function Control({index, setIndex, length=1, path, id, color, setColor, furniture, setFurniture, openings, setOpenings, segmentation, setSegmentation, saveModel, saveAllModel, saveApi, setSaveApi, saveImg, setSaveImg}) {
+export function Control({index, setIndex, length=1, color, setColor, furniture, setFurniture, openings, setOpenings, segmentation, setSegmentation, saveModel, saveAllModel, saveApi, setSaveApi, saveImg, setSaveImg, isValid, setIsValid}) {
     return (
         <Container className="pt-3" >
             <Row className="justify-content-md-center">
-                <Col md="auto">
-                    <Button onClick={()=>saveAllModel()} color="secondary">Save All</Button>
+                <Col className="m-2" md="auto">
+                    <Button onClick={()=>saveAllModel()} color="secondary">SaveAll</Button>
                 </Col>
-                <Col md="auto">
-                    <Button onClick={()=>saveModel()} color="secondary">Save</Button>
+                <Col className="m-2" md="auto">
+                    <Button id="save" onClick={()=>saveModel()} color="secondary">Save</Button>
                 </Col>
-                <Col md="auto">
+
+                <Col className="m-2" md="auto">
                     <ButtonGroup>
                         <Button color={saveApi?"secondary":"outline-secondary"} onClick={()=>setSaveApi(!saveApi)}>api</Button>
                         <Button color={saveImg?"secondary":"outline-secondary"} onClick={()=>setSaveImg(!saveImg)}>img</Button>
                     </ButtonGroup>
                 </Col>
-                <Col md="auto">
-                    <GenericPagination index={index} setIndex={setIndex}  length={length} />
+                <Col className="m-2" md="auto">
+                    <Button id="valid" color={isValid?"secondary":"outline-secondary"} onClick={()=>{setIsValid(!isValid); console.log('validclick')}}>IsValid</Button>
                 </Col>
-                <Col md="auto">
+                <Col className="m-2" md="auto">
                     <ButtonGroup>
                         <Button color={color?"secondary":"outline-secondary"} onClick={()=>setColor(!color)}>Color</Button>
                         <Button color={furniture?"secondary":"outline-secondary"} onClick={()=>setFurniture(!furniture)}>Furniture</Button>
                         <Button color={openings?"secondary":"outline-secondary"} onClick={()=>setOpenings(!openings)} >Openings</Button>
                         <Button color={segmentation?"secondary":"outline-secondary"} onClick={()=>setSegmentation(!segmentation)}>Segmentation</Button>
                     </ButtonGroup>
+                </Col>
+            </Row>
+
+            <Row className="justify-content-md-center">
+                <Col className="m-2" md="auto">
+                    <GenericPagination index={index} setIndex={setIndex}  length={length} />
                 </Col>
             </Row>
         </Container>

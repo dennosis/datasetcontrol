@@ -32,7 +32,7 @@ const spacesClasses = [
     '.Space.Undefined',
 ]
 
-export const descriptionObj = (path) => {
+export const descriptionObj = (path, isValid) => {
     const elementPlain = document.getElementsByClassName('Model')[0]
 
     if(elementPlain){
@@ -51,10 +51,23 @@ export const descriptionObj = (path) => {
             imgHeight_px: Math.ceil(offsetHeight),
         }
 
+        const spaces = getSpaces(model) || []
+
+
+        let isValidCheck
+        if(isValid===undefined)
+            if(spaces.filter((space)=>space.name.includes('Undefined')).length > 2)
+                isValidCheck = false
+            else
+                isValidCheck = true
+        else
+            isValidCheck = isValid
+
+
         const description = {
             name:(`${pathItems[2]}_${pathItems[3]}`).toLowerCase(),
             path,
-            spaces: getSpaces(model) || [],
+            spaces,
             width: model.width, 
             height: model.height,
             width_px: model.width_px, 
@@ -63,6 +76,7 @@ export const descriptionObj = (path) => {
             imgY_px: model.imgY_px,
             imgWidth_px: model.imgWidth_px,
             imgHeight_px: model.imgHeight_px,
+            isValid: isValidCheck,
             svg: btoa(svg)
         }
         return description
@@ -129,7 +143,6 @@ const calcPosition = (polygon, model) => {
 const getSegmentPosition=(width,height,rPosX,rPosY)=>{
     const horizontally = ['left', 'center', 'right']
     const vertically = ['top', 'center', 'bottom']
-    //console.log(rPosX)
     const unitSegmentWidth = Math.ceil(width / horizontally.length)
     const unitSegmentHeight = Math.ceil(height / vertically.length)
 
@@ -166,10 +179,9 @@ export const setModelSvgDOM=(modelSvg)=>{
         document.getElementById("plain").innerHTML = atob(modelSvg);
 }
 
-export const saveModel=async(descriptionObj,saveApi,saveImg,afterSave=()=>{})=>{
+export const saveModel=async(descriptionObj,saveApi,saveImg,afterSave)=>{
 
     if(saveApi && descriptionObj){
-        //if(descriptionObj.spaces.filter((space)=>space.name.includes('Undefined')).length <= 2)
         await api.storePlain(descriptionObj)
     }
     if(saveImg){        
@@ -180,8 +192,8 @@ export const saveModel=async(descriptionObj,saveApi,saveImg,afterSave=()=>{})=>{
         })
     }
     
-
-    await afterSave()
+    if(afterSave)
+        await afterSave()
 }
 
 export const validatePositiveNumber = (inputNumber) =>{
