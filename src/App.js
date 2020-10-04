@@ -24,7 +24,7 @@ function App() {
     const [descriptionIsFinding, setDescriptionIsFinding] = useState(false);
 
     const [saving, setSaving] = useState(false);
-    const [saveAllMode, setSaveAllMode] = useState(false);
+    const [saveAllModels, setSaveAllModels] = useState(false);
 
     const [color, setColor] = useState(true);
     const [furniture, setFurniture] = useState(false);
@@ -40,10 +40,6 @@ function App() {
     if (!openings) style.push('openings')
     if (segmentation) style.push('segmentation')
 
-    const saveAllModel=()=>{
-        setSaving(false)
-        setSaveAllMode(true)
-    }
 
     const updateUrl = (indexModel=0, maxIndexModel=1) => {
         if(indexModel < maxIndexModel){
@@ -88,7 +84,7 @@ function App() {
                 }
                 
             }else{
-                if(saveAllMode && !saving){
+                if(saveAllModels && !saving){
                     if(index < models.length){
                         setSaving(true)
                         saveModel(descriptionObj(description.path),                   
@@ -98,7 +94,7 @@ function App() {
                                 return setTimeout(()=>{    //dispara depois de 1.0 segundos
                                     const newIndex = index+1
                                     if(newIndex === models.length){
-                                        setSaveAllMode(false)
+                                        setSaveAllModels(false)
                                     } else {
                                         setDescriptionIsError(false)
                                         updateUrl(newIndex, models.length)
@@ -109,7 +105,7 @@ function App() {
                         )
                         
                     }else{
-                        setSaveAllMode(false)
+                        setSaveAllModels(false)
                     }
                 }    
             }
@@ -123,7 +119,7 @@ function App() {
         description, 
         descriptionIsError, 
         descriptionIsFinding, 
-        saveAllMode, 
+        saveAllModels, 
         saving, 
         saveApi, 
         saveImg
@@ -139,6 +135,7 @@ function App() {
                     index={index}
                     setIndex={(index)=>{updateUrl(index, models.length); setDescriptionIsError(false); }}
                     length={models.length}
+
                     color={color}
                     setColor={setColor}
                     furniture={furniture}
@@ -155,13 +152,17 @@ function App() {
                     setIsValid={(isValid)=>setDescription({...description, isValid})}
                     isValid={description.isValid}
 
+                    saveAllModels={saveAllModels}
+                    setSaveAllModels={(saveAllModelsIn)=>{
+                        setSaving(false)
+                        setSaveAllModels(saveAllModelsIn)
+                    }}
+
                     saveModel={() => {
                         const descriptionUpdated = descriptionObj(description.path, description.isValid)
                         saveModel(descriptionUpdated,saveApi,saveImg)
                         setDescription({...description,...descriptionUpdated})
                     }}
-
-                    saveAllModel={()=>saveAllModel()}
 
                 />
                 { 
