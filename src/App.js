@@ -12,7 +12,7 @@ import { descriptionObj, saveModel, setModelSvgDOM, validatePositiveNumber } fro
 function App() {
    
     const history = useHistory()
-    const { indexRouter } = useParams()
+    const { modelNumberRoute } = useParams()
 
     const [index, setIndex] = useState(0);
     
@@ -33,8 +33,6 @@ function App() {
     const [saveApi, setSaveApi] = useState(true);
     const [saveImg, setSaveImg] = useState(false);
     
-
-
     let style = []
 
     if (color) style.push('color')
@@ -48,31 +46,27 @@ function App() {
     }
 
     const updateUrl = (indexModel=0, maxIndexModel=1) => {
-
-        const validateIndexModel = validatePositiveNumber(indexModel)
-
-        if(validateIndexModel < maxIndexModel){
-            setIndex(validateIndexModel)
-            history.replace(`/${validateIndexModel+1}`)
+        if(indexModel < maxIndexModel){
+            setIndex(indexModel)
+            history.replace(`/${indexModel+1}`)
         }else{
             setIndex(maxIndexModel-1)
             history.replace(`/${maxIndexModel}`)
         }
-        
     }
 
     useEffect(() => {
-
+        
         if (!models.length && !modelsError) {
             api.getPlains().then(
-                async res => {
+                res => {
                     setModels(res.data)
-                    updateUrl(indexRouter, res.data.length)
+                    updateUrl((validatePositiveNumber(modelNumberRoute)-1), res.data.length)
                 },
                 error => {
                     setModelsError(true)
                 }
-            ).finally(()=>updateUrl())
+            )
         }
         
         if(models.length){
@@ -82,7 +76,7 @@ function App() {
                     api.getPlainById(models[index]._id)
                         .then(
                             res => {
-                                setDescription(res.data)
+                                setDescription({...res.data})
                                 setModelSvgDOM(res.data.svg)
                             },
                             error => {
@@ -123,7 +117,6 @@ function App() {
 
 
     }, [
-        indexRouter,
         index, 
         models, 
         modelsError,

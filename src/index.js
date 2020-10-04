@@ -12,7 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route path="/:indexRouter" component={App}/>
+        <Route path="/:modelNumberRoute" component={App}/>
       </Switch>
     </Router>
   </React.StrictMode>,

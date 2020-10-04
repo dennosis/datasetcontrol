@@ -198,8 +198,8 @@ export const saveModel=async(descriptionObj,saveApi,saveImg,afterSave)=>{
 
 export const validatePositiveNumber = (inputNumber) =>{
     const checkedNumber = Number(inputNumber)
-    if(checkedNumber && checkedNumber >= 0)
+    if(checkedNumber && checkedNumber > 0)
         return checkedNumber
     else
-        return 0
+        return 1
 }
