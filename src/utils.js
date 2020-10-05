@@ -41,6 +41,14 @@ const spaceFurnitures = {
             '.FixedFurniture.ElectricalAppliance.SaunaStove'
         ],
         spaceClass:['Space','Sauna']
+    },
+    bath:{
+        furnituresClasses:[
+            '.FixedFurniture.Toilet',
+            '.FixedFurniture.Sink',
+            '.FixedFurniture.Shower'
+        ],
+        spaceClass:['Space','Bath']
     }
 }
 
@@ -193,7 +201,7 @@ const checkElementInSpace=(space, element)=>{
 const checkUndefinedSpaces=()=>{
 
     const spaceUndefinedClass = '.Space.Undefined'
-    const spacesCheck = ['sauna']
+    const spacesCheck = ['sauna', 'bath']
 
     const spacePolygonUndefined = document.querySelectorAll(`#plain ${spaceUndefinedClass}`)
     if(spacePolygonUndefined.length){
