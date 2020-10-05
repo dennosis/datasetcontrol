@@ -49,6 +49,12 @@ const spaceFurnitures = {
             '.FixedFurniture.Shower'
         ],
         spaceClass:['Space','Bath']
+    },
+    closet:{
+        furnituresClasses:[
+            '.FixedFurniture.Closet'
+        ],
+        spaceClass:['Space','Closet','WalkIn']
     }
 }
 
@@ -201,19 +207,18 @@ const checkElementInSpace=(space, element)=>{
 const checkUndefinedSpaces=()=>{
 
     const spaceUndefinedClass = '.Space.Undefined'
-    const spacesCheck = ['sauna', 'bath']
+    const spacesCheck = ['sauna', 'closet', 'bath']
 
     const spacePolygonUndefined = document.querySelectorAll(`#plain ${spaceUndefinedClass}`)
     if(spacePolygonUndefined.length){
         spacePolygonUndefined.forEach((spaceUndefined)=>{
             spacesCheck.forEach((spaceCheck)=>{
-                const {furnituresClasses, spaceClass} = spaceFurnitures[spaceCheck] 
+                let {furnituresClasses, spaceClass} = spaceFurnitures[spaceCheck] 
                 furnituresClasses.forEach((furnituresClass)=>{
-                    const allFurnitures = document.querySelectorAll(`#plain ${furnituresClass}`)
+                    let allFurnitures = document.querySelectorAll(`#plain ${furnituresClass}`)
                     allFurnitures.forEach((furniture)=>{
                         if(checkElementInSpace(spaceUndefined, furniture)){
                             spaceUndefined.className.baseVal = spaceClass.join(' ')
-                            console.log('aquii')
                         }
                     })
                 })
