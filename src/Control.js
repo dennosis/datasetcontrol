@@ -15,13 +15,13 @@ export function Control({index, setIndex, length=1, color, setColor, furniture, 
                     <Button id="save" onClick={()=>saveModel()} color="secondary">Save</Button>
                 </Col>
                 <Col className="m-2" md="auto">
-                    <Button id="valid" color={isValid?"success":"outline-success"} onClick={()=>{setIsValid(!isValid); console.log('validclick')}}>IsValid</Button>
-                </Col>
-                <Col className="m-2" md="auto">
                     <ButtonGroup>
                         <Button color={saveApi?"secondary":"outline-secondary"} onClick={()=>setSaveApi(!saveApi)}>api</Button>
                         <Button color={saveImg?"secondary":"outline-secondary"} onClick={()=>setSaveImg(!saveImg)}>img</Button>
                     </ButtonGroup>
+                </Col>
+                <Col className="m-2" md="auto">
+                    <Button id="valid" color={isValid?"success":"outline-success"} onClick={()=>{setIsValid(!isValid); console.log('validclick')}}>IsValid</Button>
                 </Col>
                 <Col className="m-2" md="auto">
                     <ButtonGroup>

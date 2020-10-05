@@ -158,10 +158,15 @@ function App() {
                         setSaveAllModels(saveAllModelsIn)
                     }}
 
-                    saveModel={() => {
-                        const descriptionUpdated = descriptionObj(description.path, description.isValid)
-                        saveModel(descriptionUpdated,saveApi,saveImg)
-                        setDescription({...description,...descriptionUpdated})
+                    saveModel={async() => {
+                        if(!saveAllModels && !saving){
+                            await setSaving(true)
+                            const descriptionUpdated = await descriptionObj(description.path, description.isValid)
+                            await saveModel(descriptionUpdated,saveApi,saveImg)
+                            await setDescription({...description,...descriptionUpdated})
+                            await setSaving(false)
+
+                        }
                     }}
 
                 />

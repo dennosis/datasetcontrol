@@ -1,4 +1,4 @@
-import {polygonArea} from 'd3-polygon'
+import {polygonArea, polygonContains, polygonCentroid} from 'd3-polygon'
 import api from './api'
 
 import domtoimage from 'dom-to-image';
@@ -32,9 +32,21 @@ const spacesClasses = [
     '.Space.Undefined',
 ]
 
+const spaceFurnitures = {
+    sauna:{
+        furnituresClasses:[
+            '.FixedFurniture.SaunaBenchHigh',
+            '.FixedFurniture.SaunaBenchMid',
+            '.FixedFurniture.SaunaBenchLow',
+            '.FixedFurniture.ElectricalAppliance.SaunaStove'
+        ],
+        spaceClass:['Space','Sauna']
+    }
+}
+
 export const descriptionObj = (path, isValid) => {
     const elementPlain = document.getElementsByClassName('Model')[0]
-
+    checkUndefinedSpaces()
     if(elementPlain){
         const {offsetWidth,offsetHeight} = document.getElementById('plain')
         const svg = document.getElementById('temp').outerHTML
@@ -50,9 +62,8 @@ export const descriptionObj = (path, isValid) => {
             imgWidth_px: Math.ceil(offsetWidth),
             imgHeight_px: Math.ceil(offsetHeight),
         }
-
+        
         const spaces = getSpaces(model) || []
-
 
         let isValidCheck
         if(isValid===undefined)
@@ -138,6 +149,55 @@ const calcPosition = (polygon, model) => {
         horizontally,
         vertically
     }
+}
+
+const checkElementInSpace=(space, element)=>{
+
+    const spacePolygon = space.firstElementChild
+
+    const matrixElement = element.transform.baseVal.consolidate().matrix
+    const elementPolygon = element.firstElementChild.firstElementChild
+
+    const pointsSpace = []
+    const pointsElement = []
+    for(let i=0; i < spacePolygon.points.length; i++){
+        const {x, y} = spacePolygon.points.getItem(i)
+        pointsSpace.push([x, y])
+    }
+    for(let i=0; i < elementPolygon.points.length; i++){
+        const {x, y} = elementPolygon.points.getItem(i).matrixTransform(matrixElement);
+        pointsElement.push([x, y])
+    }
+    const centerElement = polygonCentroid(pointsElement)
+
+    return polygonContains(pointsSpace, centerElement)
+}
+
+const checkUndefinedSpaces=()=>{
+
+    const spaceUndefinedClass = '.Space.Undefined'
+    const spacesCheck = ['sauna']
+
+    const spacePolygonUndefined = document.querySelectorAll(`#plain ${spaceUndefinedClass}`)
+    if(spacePolygonUndefined.length){
+        spacePolygonUndefined.forEach((spaceUndefined)=>{
+            spacesCheck.forEach((spaceCheck)=>{
+                const {furnituresClasses, spaceClass} = spaceFurnitures[spaceCheck] 
+                furnituresClasses.forEach((furnituresClass)=>{
+                    const allFurnitures = document.querySelectorAll(`#plain ${furnituresClass}`)
+                    allFurnitures.forEach((furniture)=>{
+                        if(checkElementInSpace(spaceUndefined, furniture)){
+                            spaceUndefined.className.baseVal = spaceClass.join(' ')
+                            console.log('aquii')
+                        }
+                    })
+                })
+
+            })
+            
+        })
+    }
+
 }
 
 const getSegmentPosition=(width,height,rPosX,rPosY)=>{

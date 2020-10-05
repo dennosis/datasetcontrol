@@ -63,8 +63,9 @@
 .furniture .FixedFurniture.Jacuzzi,
 .furniture .FixedFurniture.CornerSink,
 .furniture .FixedFurniture.CoatRack,
-.furniture .FixedFurniture.Bathtub
-.furniture .FixedFurniture.FireplaceRound
+.furniture .FixedFurniture.Bathtub,
+.furniture .FixedFurniture.FireplaceRound,
+.furniture .FixedFurniture.SideSink
 {
     display: none;
 }
