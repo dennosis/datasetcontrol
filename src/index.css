@@ -71,101 +71,40 @@
 }
 
 
-
-
-.color .Door {
-    fill: darkorange;
-}
-.color .Window{
-    fill: rgb(238, 255, 0);
-}
-.color .Railing{
-    fill: #000000
-}
-.color .Stairs{
-    fill: rgb(255, 102, 0)
-}
-
+.color .Railing{    fill: #000000  }
+.color .Door {      fill: #4f3bff  }
+.color .Window{     fill: #eeff00  }
+.color .Stairs{     fill: #4e2a11  }
 
 /* spaces */
-.color .Space.Room{
-    fill: #1d8309
-}
-.color .Space.Bath{
-    fill: #095c83
-}
-.color .Space.Entry{
-    fill: rgb(0, 255, 213);
-}
-.color .Space.Entry.Lobby{
-    fill: rgb(0, 255, 213);
-}
-.color .Space.LivingRoom{
-    fill: rgb(176, 95, 252);
-}
-.color .Space.Bedroom{
-    fill: rgb(252, 95, 155);
-}
-.color .Space.Kitchen{
-    fill: rgb(95, 252, 103);
-}
-.color .Space.Garage{
-    fill: rgb(141, 45, 90);
-}
-.color .Space.Storage{
-    fill: rgb(184, 252, 95);
-}
-.color .Space.Outdoor{
-    fill: rgb(72, 39, 116);
-}
-.color .Space.UserDefined{
-    fill: rgb(97, 155, 119);
-}
-.color .Space.DraughtLobby{
-    fill: rgb(93, 84, 105);
-}
-.color .Space.Alcove{
-    fill: rgb(49, 192, 73);
-}
-.color .Space.Utility.Laundry{
-    fill: rgb(49, 143, 127);
-}
-.color .Space.Dining{
-    fill: rgb(143, 75, 101);
-}
-.color .Space.Closet.WalkIn{
-    fill: #65945c
-}
-.color .Space.TechnicalRoom{
-    fill: #244b34
-}
-.color .Space.Den.Fireplace{
-    fill: rgb(141, 45, 45);
-}
-.color .Space.DressingRoom{
-    fill: rgb(126, 93, 170);
-}
-.color .Space.Sauna{
-    fill: rgb(190, 50, 50);
-}
-.color .Space.Office{
-    fill: rgb(11, 129, 110);
-}
-.color .Space.RecreationRoom{
-    fill: rgb(101, 211, 169);
-}
-.color .Space.Bar{
-    fill: #58884e
-}
-.color .Space.Library{
-    fill: #5c948b
-}
-.color .Space.CarPort{
-    fill: rgb(141, 45, 90)
-}
-.color .Space.Undefined{
-    fill: rgb(255, 255, 255)
-}
+
+.color .Space.Storage{              fill: #ffa095   }
+.color .Space.Garage{               fill: #a65628   }
+.color .Space.TechnicalRoom{        fill: #ff5e00   }
+.color .Space.Office{               fill: #d3a168   }
+.color .Space.CarPort{              fill: #c97500   }
+.color .Space.Entry{                fill: #cf8c00   }
+.color .Space.Entry.Lobby{          fill: #e6ab02   }
+.color .Space.Outdoor{              fill: #c09a03   }
+.color .Space.DraughtLobby{         fill: #3f5202   }
+.color .Space.Bar{                  fill: #66a61e   }
+.color .Space.UserDefined{          fill: #1b9e77   }
+.color .Space.RecreationRoom{       fill: #70c7b8   }
+.color .Space.Library{              fill: #00d2d5   }
+.color .Space.Utility.Laundry{      fill: #9dddff   }
+.color .Space.Bath{                 fill: #80b1d3   }
+.color .Space.Kitchen{              fill: #377eb8   }
+.color .Space.Dining{               fill: #5e5fb9   }
+.color .Space.LivingRoom{           fill: #aca4df   }
+.color .Space.DressingRoom{         fill: #984ea3   }
+.color .Space.Closet.WalkIn{        fill: #bc80bd   }
+.color .Space.Alcove{               fill: #f781bf   }
+.color .Space.Room{                 fill: #fca0cf   }
+.color .Space.Bedroom{              fill: #e7298a   }
+.color .Space.Sauna{                fill: #aa2753   }
+.color .Space.Den.Fireplace{        fill: #9c142b   }
+
+.color .Space.Undefined{            fill: #ffffff   }
 
 
 /** segmentation */
