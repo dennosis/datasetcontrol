@@ -1,4 +1,4 @@
-import {polygonArea, polygonContains, polygonCentroid} from 'd3-polygon'
+import {polygonArea, polygonContains} from 'd3-polygon'
 import api from './api'
 
 import domtoimage from 'dom-to-image';
@@ -62,7 +62,7 @@ export const descriptionObj = (path, isValid) => {
             imgWidth_px: Math.ceil(offsetWidth),
             imgHeight_px: Math.ceil(offsetHeight),
         }
-        
+
         const spaces = getSpaces(model) || []
 
         let isValidCheck
@@ -156,19 +156,36 @@ const checkElementInSpace=(space, element)=>{
     const spacePolygon = space.firstElementChild
 
     const matrixElement = element.transform.baseVal.consolidate().matrix
-    const elementPolygon = element.firstElementChild.firstElementChild
 
     const pointsSpace = []
-    const pointsElement = []
+
     for(let i=0; i < spacePolygon.points.length; i++){
         const {x, y} = spacePolygon.points.getItem(i)
         pointsSpace.push([x, y])
     }
-    for(let i=0; i < elementPolygon.points.length; i++){
-        const {x, y} = elementPolygon.points.getItem(i).matrixTransform(matrixElement);
-        pointsElement.push([x, y])
-    }
-    const centerElement = polygonCentroid(pointsElement)
+
+    let point = document.getElementById("temp").createSVGPoint();
+
+    const elementBBox = element.getBBox()
+
+    point.x = elementBBox.x + elementBBox.width / 2
+    point.y = elementBBox.y + elementBBox.height / 2
+
+    const {x, y} = point.matrixTransform(matrixElement)
+
+    const centerElement = [x,y]
+
+
+    /*
+        for(let i=0; i < elementPolygon.points.length; i++){
+            const {x, y} = elementPolygon.points.getItem(i).matrixTransform(matrixElement);
+            pointsElement.push([x, y])
+        }
+        centerElement = polygonCentroid(pointsElement)
+    */
+
+    
+
 
     return polygonContains(pointsSpace, centerElement)
 }
