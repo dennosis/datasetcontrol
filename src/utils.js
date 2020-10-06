@@ -309,7 +309,7 @@ export const deleteUndefinedSpacesMinimal=()=>{
 
     spacesUndefined.forEach((spaceUndefined)=>{
         const { width , height } = spaceUndefined.getBBox()
-        if(width <= 1 || height <= 1)
+        if(width <= 5 || height <= 5)
             spaceUndefined.parentNode.removeChild(spaceUndefined)
     })
 }
