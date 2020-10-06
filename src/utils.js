@@ -63,6 +63,7 @@ const spaceFurnitures = {
 export const descriptionObj = (path, isValid) => {
     const elementPlain = document.getElementsByClassName('Model')[0]
     deleteDuplicatePlains()
+    deleteUndefinedSpacesMinimal()
     checkUndefinedSpaces()
     if(elementPlain){
         const {offsetWidth,offsetHeight} = document.getElementById('plain')
@@ -300,4 +301,15 @@ export const validatePositiveNumber = (inputNumber) =>{
 export const deleteDuplicatePlains=()=>{
     document.querySelectorAll('#Model .Floor[style*="display: none"]').forEach(e => e.parentNode.removeChild(e));
     document.querySelectorAll('#Model .FloorsCompose[style*="display: none"]').forEach(e => e.parentNode.removeChild(e));
+}
+
+export const deleteUndefinedSpacesMinimal=()=>{
+    const spaceUndefinedClass = '.Space.Undefined'
+    const spacesUndefined = document.querySelectorAll(`#plain ${spaceUndefinedClass}`)
+
+    spacesUndefined.forEach((spaceUndefined)=>{
+        const { width , height } = spaceUndefined.getBBox()
+        if(width < 0.2 || height < 0.2)
+            spaceUndefined.parentNode.removeChild(spaceUndefined)
+    })
 }
