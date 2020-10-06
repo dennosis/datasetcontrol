@@ -35,6 +35,7 @@ const spacesClasses = [
 const spaceFurnitures = {
     sauna:{
         furnituresClasses:[
+            '.FixedFurniture.SaunaBench',
             '.FixedFurniture.SaunaBenchHigh',
             '.FixedFurniture.SaunaBenchMid',
             '.FixedFurniture.SaunaBenchLow',
@@ -52,6 +53,7 @@ const spaceFurnitures = {
     },
     closet:{
         furnituresClasses:[
+            '.FixedFurniture.CoatCloset',
             '.FixedFurniture.Closet'
         ],
         spaceClass:['Space','Closet','WalkIn']

@@ -65,7 +65,8 @@
 .furniture .FixedFurniture.CoatRack,
 .furniture .FixedFurniture.Bathtub,
 .furniture .FixedFurniture.FireplaceRound,
-.furniture .FixedFurniture.SideSink
+.furniture .FixedFurniture.SideSink,
+.furniture .FixedFurniture.CounterTop
 {
     display: none;
 }
@@ -102,7 +103,7 @@
 .color .Space.Room{                 fill: #fca0cf   }
 .color .Space.Bedroom{              fill: #e7298a   }
 .color .Space.Sauna{                fill: #aa2753   }
-.color .Space.Den.Fireplace{        fill: #9c142b   }
+.color .Space.Fireplace{            fill: #9c142b   }
 
 .color .Space.Undefined{            fill: #ffffff   }
 
