@@ -10,7 +10,10 @@
     border-color: #6c757d !important;
 }
 
-
+h6.d-flex.align-items-end:hover {
+    color:#328880;
+    cursor: pointer
+}
 
 .TextLabel{
     display: none !important;
