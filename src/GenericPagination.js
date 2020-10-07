@@ -23,28 +23,33 @@ export function GenericPagination({index, setIndex, length=1}) {
         return pages
     } 
 
+    const setPagination=(e, index)=>{
+        e.stopPropagation();
+        selectPage(index)
+    }
+
   return (
     <Pagination aria-label="Page navigation example" className='mb-auto'>
         <PaginationItem>
-            <PaginationLink first href="#" onClick={()=>selectPage(0)} />
+            <PaginationLink first href='' onClick={(e)=>setPagination(e, 0)} />
         </PaginationItem>
         <PaginationItem>
-            <PaginationLink previous href="#" onClick={()=>selectPage(index-1)} />
+            <PaginationLink previous href='' onClick={(e)=>setPagination(e, index-1)} />
         </PaginationItem>
         { 
             createMapPages(index, 5).map(page =>(
                 <PaginationItem key={page} active={page===index} >
-                    <PaginationLink href="#" onClick={()=>selectPage(page)}>
+                    <PaginationLink href='' onClick={(e)=>setPagination(e, page)}>
                         {page+1}
                     </PaginationLink>
                 </PaginationItem>
             ))
         }
         <PaginationItem>
-            <PaginationLink next href="#" onClick={()=>selectPage(index+1)} />
+            <PaginationLink next href='' onClick={(e)=>setPagination(e, index+1)} />
         </PaginationItem>
         <PaginationItem>
-            <PaginationLink last href="#" onClick={()=>selectPage(length-1)} />
+            <PaginationLink last href='' onClick={(e)=>setPagination(e, length-1)} />
         </PaginationItem>
     </Pagination>
   );

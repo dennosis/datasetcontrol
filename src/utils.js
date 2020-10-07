@@ -318,3 +318,30 @@ export const scrollElement=(classElement, index)=>{
     const element = document.querySelectorAll(`#plain ${classElement}`)[index]
     element.scrollIntoView()
 }
+
+export const spaceSelection=(classElement, index, hover=false)=>{
+    
+    document.querySelectorAll(`#plain .space_selection`).forEach((item, index)=>{
+        item.classList.remove('space_selection')
+    })
+
+    if(hover){
+        const element = document.querySelectorAll(`#plain ${classElement}`)[index]
+        element.classList.add('space_selection')
+    }
+}
+
+
+var x=0, y=0, down=false;
+
+document.onmousemove = (e) => {
+    if (x && y && down) {
+        window.scrollBy(x-e.clientX, y-e.clientY);
+    }
+    x = e.clientX;
+    y = e.clientY;
+}
+
+document.onmouseup = (e) => down = false
+
+export const mouseDownModel = () => down=true

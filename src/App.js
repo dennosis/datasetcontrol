@@ -6,7 +6,7 @@ import { Container } from 'reactstrap';
 import api from './api'
 
 import { Control } from './Control.js'
-import { descriptionObj, saveModel, setModelSvgDOM, validatePositiveNumber, scrollElement } from './utils.js'
+import { descriptionObj, saveModel, setModelSvgDOM, validatePositiveNumber, scrollElement, spaceSelection, mouseDownModel } from './utils.js'
 
 
 function App() {
@@ -112,6 +112,7 @@ function App() {
         }
 
 
+
     }, [
         index, 
         models, 
@@ -133,7 +134,10 @@ function App() {
             <Container className={style.join(' ')}>
                 <Control
                     index={index}
-                    setIndex={(index)=>{updateUrl(index, models.length); setDescriptionIsError(false); }}
+                    setIndex={(index)=>{
+                        updateUrl(index, models.length); 
+                        setDescriptionIsError(false); 
+                    }}
                     length={models.length}
 
                     color={color}
@@ -170,34 +174,42 @@ function App() {
                     }}
 
                 />
-                { 
-                    description &&
-                    <section className="p-3">
-                        <h2>name: {description.name}</h2>
-                        <h3>dimensions: {`${description.width}m x ${description.height}m`}</h3>
-                    </section>
-                }
-                <div className="d-flex">
-                    {
+                <div className="description pb-5 d-flex flex-column align-items-start">
+                    { 
                         description &&
-                        <section className="p-3" style={{ minWidth: '500px' }}>
-                            {
-                                description.spaces &&
-                                description.spaces.map((space, index) => (
-                                    <h6 key={index} className="d-flex align-items-end" onClick={()=>{scrollElement(space.class, space.index)}} >
-                                        <svg viewBox="0 0 20 20" className="mr-1" style={{ width: '20px', height: '20px' }} ><g className={`${(space.class).replaceAll('.', ' ')}`} stroke="#000000" style={{ fillOpacity: 1, strokeWidth: 2, strokeOpacity: 1 }}><rect x="0" y="0" width="100%" height="100%" /></g></svg>
-                                        {`${space.name}_${space.index}: area(${space.area}m²) max(${space.width}m x ${space.height}m) pos(${space.horizontally},${space.vertically})`}
-                                    </h6>
-                                ))
-                            }
+                        <section className="p-3">
+                            <h2>name: {description.name}</h2>
+                            <h3>dimensions: {`${description.width}m x ${description.height}m`}</h3>
                         </section>
                     }
-                    <section id="model" className="p-5">
+                        {
+                            description &&
+                            <section onMouseOut={()=>spaceSelection()} className="description__spaces p-3 pb-5 d-flex flex-column align-items-start" style={{ minWidth: '100px' }}>
+                                {
+                                    description.spaces &&
+                                    description.spaces.map((space, index) => (
+                                        <h6 key={index} className="d-flex align-items-end" onMouseOver={()=>spaceSelection(space.class, space.index, true)} onClick={()=>{scrollElement(space.class, space.index)}} >
+                                            <svg viewBox="0 0 20 20" className="mr-1" style={{ width: '20px', height: '20px' }} ><g className={`${(space.class).replaceAll('.', ' ')}`} stroke="#000000" style={{ fillOpacity: 1, strokeWidth: 2, strokeOpacity: 1 }}><rect x="0" y="0" width="100%" height="100%" /></g></svg>
+                                            <span>{`${space.name}_${space.index}: area(${space.area}m²) max(${space.width}m x ${space.height}m) pos(${space.horizontally},${space.vertically})`}</span>
+                                        </h6>
+                                    ))
+                                }
+                            </section>
+                        }
+                </div>
+                <div className="d-flex">
+                    <section id="model" onMouseDown={(e)=>mouseDownModel(e)} className="p-5">
                         <div id="plain">
-
                         </div>
                     </section>
                 </div>
+                { 
+                    descriptionIsFinding &&
+                    <div className="loader-container">
+                        <div className="loader"></div>
+                    </div>
+                }
+
             </Container>
 
         );
