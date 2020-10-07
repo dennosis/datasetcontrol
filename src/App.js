@@ -6,7 +6,7 @@ import { Container } from 'reactstrap';
 import api from './api'
 
 import { Control } from './Control.js'
-import { descriptionObj, saveModel, setModelSvgDOM, validatePositiveNumber } from './utils.js'
+import { descriptionObj, saveModel, setModelSvgDOM, validatePositiveNumber, scrollElement } from './utils.js'
 
 
 function App() {
@@ -184,7 +184,7 @@ function App() {
                             {
                                 description.spaces &&
                                 description.spaces.map((space, index) => (
-                                    <h6 key={index} className="d-flex align-items-end">
+                                    <h6 key={index} className="d-flex align-items-end" onClick={()=>{scrollElement(space.class, space.index)}}>
                                         <svg viewBox="0 0 20 20" className="mr-1" style={{ width: '20px', height: '20px' }} ><g className={`${(space.class).replaceAll('.', ' ')}`} stroke="#000000" style={{ fillOpacity: 1, strokeWidth: 2, strokeOpacity: 1 }}><rect x="0" y="0" width="100%" height="100%" /></g></svg>
                                         {`${space.name}_${space.index}: area(${space.area}m²) max(${space.width}m x ${space.height}m) pos(${space.horizontally},${space.vertically})`}
                                     </h6>

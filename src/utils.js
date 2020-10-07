@@ -313,3 +313,8 @@ export const deleteUndefinedSpacesMinimal=()=>{
             spaceUndefined.parentNode.removeChild(spaceUndefined)
     })
 }
+
+export const scrollElement=(classElement, index)=>{
+    const element = document.querySelectorAll(`#plain ${classElement}`)[index]
+    element.scrollIntoView()
+}
