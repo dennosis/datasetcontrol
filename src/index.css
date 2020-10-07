@@ -1,3 +1,6 @@
+body{
+    background-color: #212529
+}
 #model {
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -130,6 +133,17 @@
 .description__spaces:hover span{
     display: initial;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 /* Classas do plano */
 
