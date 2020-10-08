@@ -353,7 +353,7 @@ export const classesSpace=()=>{
         'Space UserDefined',    
         'Space RecreationRoom', 
         'Space Library',        
-        'Space Utility Laundr', 
+        'Space Utility Laundry', 
         'Space Bath',           
         'Space Kitchen',        
         'Space Dining',         
