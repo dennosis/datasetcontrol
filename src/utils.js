@@ -327,10 +327,46 @@ export const spaceSelection=(classElement, index, hover=false)=>{
 
     if(hover){
         const element = document.querySelectorAll(`#plain ${classElement}`)[index]
-        element.classList.add('space_selection')
+        if(element)
+            element.classList.add('space_selection')
     }
 }
 
+export const updateClassSpace=(classElement, index, classElementUpdate)=>{
+    const element = document.querySelectorAll(`#plain ${classElement}`)[index]
+    if(element)
+        element.setAttribute('class', classElementUpdate)
+}
+
+export const classesSpace=()=>{
+    return [
+        'Space Storage',        
+        'Space Garage',         
+        'Space TechnicalRoom', 
+        'Space Office',         
+        'Space CarPort',        
+        'Space Entry',          
+        'Space Entry Lobby',    
+        'Space Outdoor',        
+        'Space DraughtLobby',   
+        'Space Bar',            
+        'Space UserDefined',    
+        'Space RecreationRoom', 
+        'Space Library',        
+        'Space Utility Laundr', 
+        'Space Bath',           
+        'Space Kitchen',        
+        'Space Dining',         
+        'Space LivingRoom',     
+        'Space DressingRoom',   
+        'Space Closet WalkIn',  
+        'Space Alcove',         
+        'Space Room',           
+        'Space Bedroom',        
+        'Space Sauna',          
+        'Space Fireplace',
+    ]
+}
 
 var x=0, y=0, down=false;
 
