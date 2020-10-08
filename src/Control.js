@@ -14,10 +14,10 @@ export function Control({index, setIndex, length=1, color, setColor, furniture, 
             </Row>
             <Row className="justify-content-md-center mb-2">
                 <Col className="m-2" md="auto">
-                    <Button size="sm" color={saveAllModels?"dark":"outline-dark"} onClick={()=>setSaveAllModels(!saveAllModels)} >SaveAll</Button>
+                    <Button id="valid" size="sm" color={isValid?"dark":"outline-dark"} onClick={()=>{setIsValid(!isValid); console.log('validclick')}}>IsValid</Button>
                 </Col>
                 <Col className="m-2" md="auto">
-                    <Button id="save" size="sm" onClick={()=>saveModel()} color="dark">Save</Button>
+                    <Button size="sm" color={saveAllModels?"dark":"outline-dark"} onClick={()=>setSaveAllModels(!saveAllModels)} >SaveAll</Button>
                 </Col>
                 <Col className="m-2" md="auto">
                     <ButtonGroup>
@@ -26,7 +26,7 @@ export function Control({index, setIndex, length=1, color, setColor, furniture, 
                     </ButtonGroup>
                 </Col>
                 <Col className="m-2" md="auto">
-                    <Button id="valid" size="sm" color={isValid?"success":"outline-success"} onClick={()=>{setIsValid(!isValid); console.log('validclick')}}>IsValid</Button>
+                    <Button id="save" size="sm" onClick={()=>saveModel()} color="success">Save</Button>
                 </Col>
                 <Col className="m-2" md="auto">
                     <ButtonGroup>
