@@ -70,6 +70,10 @@ body{
     left: 0;
     pointer-events: none;
     z-index: 100;
+    opacity: 0.5;
+}
+.controll:hover{
+    opacity: 1;
 }
 
 .controll button, .controll ul{

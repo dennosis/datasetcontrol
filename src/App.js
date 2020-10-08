@@ -205,7 +205,7 @@ function App() {
                                                         await saveModelAndSVG()
                                                         await setUpdateSpace({})
                                                     }}
-                                                    defaultValue={space.class.replace('.Space.', 'Space ')}
+                                                    value={space.class.replace('.Space.', 'Space ')}
                                                 > 
                                                     {
                                                         classesSpace().map((classSpace, ind)=><option key={ind} value={classSpace} >{classSpace}</option>)

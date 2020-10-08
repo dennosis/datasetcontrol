@@ -380,4 +380,8 @@ document.onmousemove = (e) => {
 
 document.onmouseup = (e) => down = false
 
-export const mouseDownModel = () => down=true
+export const mouseDownModel = (e) => {
+    down=true
+    x = e.clientX;
+    y = e.clientY;
+}
