@@ -7,11 +7,6 @@ import { GenericPagination } from './GenericPagination'
 export function Control({index, setIndex, length=1, color, setColor, furniture, setFurniture, openings, setOpenings, segmentation, setSegmentation, saveModel, saveAllModels, setSaveAllModels, saveApi, setSaveApi, saveImg, setSaveImg, isValid, setIsValid}) {
     return (
         <Container className="pt-3 controll" >
-            <Row className="justify-content-md-center">
-                <Col md="auto">
-                    <GenericPagination index={index} setIndex={setIndex}  length={length} />
-                </Col>
-            </Row>
             <Row className="justify-content-md-center mb-2">
                 <Col className="m-2" md="auto">
                     <Button id="valid" size="sm" color={isValid?"dark":"outline-dark"} onClick={()=>{setIsValid(!isValid); console.log('validclick')}}>IsValid</Button>
@@ -35,6 +30,11 @@ export function Control({index, setIndex, length=1, color, setColor, furniture, 
                         <Button size="sm" color={openings?"dark":"outline-dark"} onClick={()=>setOpenings(!openings)} >Openings</Button>
                         <Button size="sm" color={segmentation?"dark":"outline-dark"} onClick={()=>setSegmentation(!segmentation)}>Segmentation</Button>
                     </ButtonGroup>
+                </Col>
+            </Row>
+            <Row className="justify-content-md-center">
+                <Col md="auto">
+                    <GenericPagination index={index} setIndex={setIndex}  length={length} />
                 </Col>
             </Row>
         </Container>
