@@ -70,7 +70,7 @@ body{
     left: 0;
     pointer-events: none;
     z-index: 100;
-    opacity: 0.15;
+    opacity: 0.1;
 }
 .controll:hover{
     opacity: 1;
@@ -100,8 +100,6 @@ body{
     pointer-events: none;
 
 }
-
-
 
 .description h6, .description h2, .description h3{
     pointer-events: all;
@@ -138,6 +136,9 @@ body{
     display: initial;
 }
 
+.description__title{
+    opacity: 0.2;
+}
 
 
 

@@ -179,51 +179,51 @@ function App() {
                     saveModel={saveModelAndSVG}
 
                 />
-                <div className="description pb-5 d-flex flex-column align-items-start">
+                <div className="description pt-5 d-flex flex-column align-items-start justify-content-end">
+                    {
+                        description &&
+                        <section onMouseOut={()=>{spaceSelection(); setUpdateSpace({})}} className="description__spaces p-3 pb-5 d-flex flex-column align-items-start" style={{ minWidth: '100px' }}>
+                            {
+                                description.spaces &&
+                                description.spaces.map((space, index) => {
+
+                                
+                                    if(updateSpace.name===space.name && updateSpace.index===space.index){
+                                        return (
+                                            <select 
+                                                key={index}
+                                                className="my-1 mr-sm-2 custom-select"
+                                                onChange={async (e)=>{
+                                                    await updateClassSpace(space.class,space.index,e.target.value)
+                                                    await saveModelAndSVG()
+                                                    await setUpdateSpace({})
+                                                }}
+                                                defaultValue={space.class.replace('.Space.', 'Space ').replaceAll('.',' ')}
+                                            > 
+                                                {
+                                                    classesSpace().map((classSpace, ind)=><option key={ind} value={classSpace} >{classSpace}</option>)
+                                                }
+                                            </select>
+                                        )
+                                    }else{
+                                        return (
+                                            <h6 key={index} onDoubleClick={()=>setUpdateSpace({name:space.name, index:space.index})} className="d-flex align-items-end" onMouseOver={()=>spaceSelection(space.class, space.index, true)} onClick={()=>{scrollElement(space.class, space.index)}} >
+                                                <svg viewBox="0 0 20 20" className="mr-1" style={{ width: '20px', height: '20px' }} ><g className={`${(space.class).replaceAll('.', ' ')}`} stroke="#000000" style={{ fillOpacity: 1, strokeWidth: 2, strokeOpacity: 1 }}><rect x="0" y="0" width="100%" height="100%" /></g></svg>
+                                                <span>{`${space.name}_${space.index}: area(${space.area}m²) max(${space.width}m x ${space.height}m) pos(${space.horizontally},${space.vertically})`}</span>
+                                            </h6>
+                                        )
+                                    }
+                                })
+                            }
+                        </section>
+                    }
                     { 
                         description &&
-                        <section className="p-3">
+                        <section className="description__title p-3">
                             <h2>name: {description.name}</h2>
                             <h3>dimensions: {`${description.width}m x ${description.height}m`}</h3>
                         </section>
                     }
-                        {
-                            description &&
-                            <section onMouseOut={()=>{spaceSelection(); setUpdateSpace({})}} className="description__spaces p-3 pb-5 d-flex flex-column align-items-start" style={{ minWidth: '100px' }}>
-                                {
-                                    description.spaces &&
-                                    description.spaces.map((space, index) => {
-
-                                    
-                                        if(updateSpace.name===space.name && updateSpace.index===space.index){
-                                            return (
-                                                <select 
-                                                    key={index}
-                                                    className="my-1 mr-sm-2 custom-select"
-                                                    onChange={async (e)=>{
-                                                        await updateClassSpace(space.class,space.index,e.target.value)
-                                                        await saveModelAndSVG()
-                                                        await setUpdateSpace({})
-                                                    }}
-                                                    defaultValue={space.class.replace('.Space.', 'Space ').replaceAll('.',' ')}
-                                                > 
-                                                    {
-                                                        classesSpace().map((classSpace, ind)=><option key={ind} value={classSpace} >{classSpace}</option>)
-                                                    }
-                                                </select>
-                                            )
-                                        }else{
-                                            return (
-                                                <h6 key={index} onDoubleClick={()=>setUpdateSpace({name:space.name, index:space.index})} className="d-flex align-items-end" onMouseOver={()=>spaceSelection(space.class, space.index, true)} onClick={()=>{scrollElement(space.class, space.index)}} >
-                                                    <svg viewBox="0 0 20 20" className="mr-1" style={{ width: '20px', height: '20px' }} ><g className={`${(space.class).replaceAll('.', ' ')}`} stroke="#000000" style={{ fillOpacity: 1, strokeWidth: 2, strokeOpacity: 1 }}><rect x="0" y="0" width="100%" height="100%" /></g></svg>
-                                                    <span>{`${space.name}_${space.index}: area(${space.area}m²) max(${space.width}m x ${space.height}m) pos(${space.horizontally},${space.vertically})`}</span>
-                                                </h6>
-                                            )
-                                        }
-                                    })
-                                }
-                            </section>
-                        }
                 </div>
                 <div className="d-flex">
                     <section id="model" onMouseDown={(e)=>mouseDownModel(e)} className="p-5">
