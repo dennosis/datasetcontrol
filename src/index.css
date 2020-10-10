@@ -183,7 +183,7 @@ body{
 {
     display: none !important;
 }
-
+.Column,
 .Misc{
     display: none !important;
 }
