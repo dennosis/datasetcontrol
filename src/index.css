@@ -169,7 +169,9 @@ body{
     stroke: none !important
 }
 .openings .Door .Panel,
-.openings .Window .Panel
+.openings .Door .Threshold,
+.openings .Window .Panel,
+.openings .Window .Glass
 {
     display: none !important;
 }
