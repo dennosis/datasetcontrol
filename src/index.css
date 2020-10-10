@@ -223,7 +223,8 @@ body{
 .furniture .FixedFurniture.ClosetTriangle,
 .furniture .FixedFurniture.WaterTap,
 .furniture .FixedFurniture.BathtubRound,
-.furniture .FixedFurniture.PlaceForFireplaceRound
+.furniture .FixedFurniture.PlaceForFireplaceRound,
+.furniture .FixedFurniture.ClosetRound
 {
     display: none;
 }
