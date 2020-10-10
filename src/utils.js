@@ -64,6 +64,7 @@ export const descriptionObj = (path, isValid) => {
     const elementPlain = document.getElementsByClassName('Model')[0]
     deleteDuplicatePlains()
     deleteUndefinedSpacesMinimal()
+    deleteSelectionControls()
     checkUndefinedSpaces()
     if(elementPlain){
         const {offsetWidth,offsetHeight} = document.getElementById('plain')
@@ -313,6 +314,19 @@ export const deleteUndefinedSpacesMinimal=()=>{
             spaceUndefined.parentNode.removeChild(spaceUndefined)
     })
 }
+
+export const deleteSelectionControls=()=>{
+    const selectionControlsClass = '.SelectionControls'
+    const selectionControls = document.querySelectorAll(`#plain ${selectionControlsClass}`)
+    selectionControls.forEach((selectionControl)=>{
+        selectionControl.parentNode.removeChild(selectionControl)
+    })
+}
+
+
+
+
+
 
 export const scrollElement=(classElement, index)=>{
     const element = document.querySelectorAll(`#plain ${classElement}`)[index]
