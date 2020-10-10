@@ -158,6 +158,11 @@ body{
 .TextLabel{
     display: none !important;
 }
+
+.Railing{
+ display: mone;
+}
+
 .color .Column.Rectangle,
 .color .Column.Circle
 {
