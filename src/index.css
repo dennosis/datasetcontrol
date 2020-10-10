@@ -184,6 +184,10 @@ body{
     display: none !important;
 }
 
+.Misc{
+    display: none !important;
+}
+
 
 
 .furniture .FixedFurniture.CoatCloset,
@@ -218,7 +222,8 @@ body{
 .furniture .FixedFurniture.CounterTop,
 .furniture .FixedFurniture.ClosetTriangle,
 .furniture .FixedFurniture.WaterTap,
-.furniture .FixedFurniture.BathtubRound
+.furniture .FixedFurniture.BathtubRound,
+.furniture .FixedFurniture.PlaceForFireplaceRound
 {
     display: none;
 }
