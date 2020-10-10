@@ -136,7 +136,9 @@ body{
     display: initial;
 }
 
-.description__title .description h3{
+.description__title h3,
+.description__title h2
+{
     opacity: 0.2;
     pointer-events: none !important;
 }
