@@ -12,7 +12,7 @@ import { descriptionObj, saveModel, setModelSvgDOM, validatePositiveNumber, scro
 function App() {
    
     const history = useHistory()
-    const { modelNumberRoute } = useParams()
+    const { modelNumberRoute, isValid } = useParams()
 
     const [index, setIndex] = useState(0);
     
@@ -47,10 +47,10 @@ function App() {
     const updateUrl = (indexModel=0, maxIndexModel=1) => {
         if(indexModel < maxIndexModel){
             setIndex(indexModel)
-            history.replace(`/${indexModel+1}`)
+            history.replace(`/${isValid}/${indexModel+1}`)
         }else{
             setIndex(maxIndexModel-1)
-            history.replace(`/${maxIndexModel}`)
+            history.replace(`/${isValid}/${maxIndexModel}`)
         }
     }
 
@@ -68,7 +68,7 @@ function App() {
     useEffect(() => {
         
         if (!models.length && !modelsError) {
-            api.getPlains().then(
+            api.getPlains(isValid).then(
                 res => {
                     setModels(res.data)
                     updateUrl((validatePositiveNumber(modelNumberRoute)-1), res.data.length)

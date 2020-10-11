@@ -16,7 +16,7 @@ const getHeader=()=>{
 }
 
 // Plain routes
-const getPlains = () => api.get('/plain',{headers:  getHeader()})
+const getPlains = (isValid) => api.get('/plain',{ headers:  getHeader(),  params: { isValid } })
 const getPlainById = (id) => api.get(`/plain/${id}`,{headers:  getHeader()})
 const storePlain = (item) => api.post(`/plain`, item, {headers:  getHeader()})
 const setPlain = (item) => api.put(`/plain`, item, {headers:  getHeader()})
