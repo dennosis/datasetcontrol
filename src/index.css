@@ -230,6 +230,7 @@ body{
 .furniture .FixedFurniture.ShowerScreenRoundRight,
 .furniture .FixedFurniture.GasStove,
 .furniture .FixedFurniture.ShowerPlatform,
+.furniture .FixedFurniture.BaseCabinetTriangle,
 .furniture .BoundaryPath
 {
     display: none;
