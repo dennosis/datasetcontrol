@@ -227,6 +227,9 @@ body{
 .furniture .FixedFurniture.PlaceForFireplaceRound,
 .furniture .FixedFurniture.ClosetRound,
 .furniture .FixedFurniture.PlaceForFireplaceCorner,
+.furniture .FixedFurniture.ShowerScreenRoundRight,
+.furniture .FixedFurniture.GasStove,
+.furniture .FixedFurniture.ShowerPlatform,
 .furniture .BoundaryPath
 {
     display: none;
