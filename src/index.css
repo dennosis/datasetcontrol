@@ -184,7 +184,8 @@ body{
     display: none !important;
 }
 .Column,
-.Misc{
+.Misc,
+.Dimension{
     display: none !important;
 }
 
