@@ -231,6 +231,7 @@ body{
 .furniture .FixedFurniture.GasStove,
 .furniture .FixedFurniture.ShowerPlatform,
 .furniture .FixedFurniture.BaseCabinetTriangle,
+.furniture .FixedFurniture.Urinal,
 .furniture .BoundaryPath
 {
     display: none;
