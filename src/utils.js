@@ -119,7 +119,7 @@ export const descriptionObj = (path, isValid) => {
 
 const getSpaces = (model) => {
     const spaces = spacesClasses.reduce((acumulador, valorAtual)=>{
-        const spacePolygon  = document.querySelectorAll(`#plain ${valorAtual} > polygon`)
+        const spacePolygon  = document.querySelectorAll(`#plain ${valorAtual} > polygon, #plain ${valorAtual} > Flight > polygon`)
         if(spacePolygon.length){
             spacePolygon.forEach((item, index)=>{
                 const {area, width, height} = calcArea(item)
