@@ -74,8 +74,8 @@ export const descriptionObj = (path, isValid) => {
         const pathItems = path.split('/')
         const { width, height, x, y } = elementPlain.getBBox()
         const model = {
-            width: Math.ceil(Math.abs(width/100)), 
-            height: Math.ceil(Math.abs(height/100)),
+            width: Math.ceil(Math.abs(width/10))/10, 
+            height: Math.ceil(Math.abs(height/10))/10,
             width_px: Math.ceil(width), 
             height_px: Math.ceil(height),
             imgX_px:Math.ceil(x),
@@ -111,6 +111,7 @@ export const descriptionObj = (path, isValid) => {
             isValid: isValidCheck,
             svg: btoa(svg)
         }
+        console.log(description)
         return description
 
     }
@@ -119,7 +120,13 @@ export const descriptionObj = (path, isValid) => {
 
 const getSpaces = (model) => {
     const spaces = spacesClasses.reduce((acumulador, valorAtual)=>{
-        const spacePolygon  = document.querySelectorAll(`#plain ${valorAtual} > polygon, #plain ${valorAtual} > Flight > polygon`)
+        let spacePolygon
+        if(valorAtual === '.Stairs'){
+            spacePolygon  = document.querySelectorAll(`#plain g${valorAtual}`)
+        }else{
+            spacePolygon  = document.querySelectorAll(`#plain ${valorAtual} > polygon`)
+        }
+        
         if(spacePolygon.length){
             spacePolygon.forEach((item, index)=>{
                 const {area, width, height} = calcArea(item)
@@ -146,15 +153,24 @@ const getSpaces = (model) => {
 
 const calcArea = (polygon) => {
     const points = []
-    for(let i=0; i < polygon.points.length; i++){
-        const {x, y} = polygon.points.getItem(i)
+
+    if(polygon.points){
+        for(let i=0; i < polygon.points.length; i++){
+            const {x, y} = polygon.points.getItem(i)
+            points.push([x, y])
+        }
+    }else{
+        const { width, height, x, y } = polygon.getBBox()
         points.push([x, y])
+        points.push([x+width, y])
+        points.push([x+width, y+height])
+        points.push([x, y+height])
     }
     //dimensões arredondadas
     return {
-        area: Math.ceil(Math.abs(polygonArea(points)/10000)),
-        width: Math.ceil(polygon.getBBox().width/100),
-        height: Math.ceil(polygon.getBBox().height/100)
+        area: Math.ceil(Math.abs(polygonArea(points)/1000))/10,
+        width: Math.ceil(polygon.getBBox().width/10)/10,
+        height: Math.ceil(polygon.getBBox().height/10)/10
     }
 }
 
@@ -196,18 +212,6 @@ const checkElementInSpace=(space, element)=>{
 
     const centerElement = [x,y]
 
-
-    /*
-        for(let i=0; i < elementPolygon.points.length; i++){
-            const {x, y} = elementPolygon.points.getItem(i).matrixTransform(matrixElement);
-            pointsElement.push([x, y])
-        }
-        centerElement = polygonCentroid(pointsElement)
-    */
-
-    
-
-
     return polygonContains(pointsSpace, centerElement)
 }
 
@@ -240,8 +244,8 @@ const checkUndefinedSpaces=()=>{
 const getSegmentPosition=(width,height,rPosX,rPosY)=>{
     const horizontally = ['left', 'center', 'right']
     const vertically = ['top', 'center', 'bottom']
-    const unitSegmentWidth = Math.ceil(width / horizontally.length)
-    const unitSegmentHeight = Math.ceil(height / vertically.length)
+    const unitSegmentWidth = width / horizontally.length
+    const unitSegmentHeight = height / vertically.length
 
     let segmentHorizontally = undefined
     let segmentVertically = undefined
