@@ -173,9 +173,12 @@ body{
 /* classes show or hide das items do plano */
 
 .openings .Door,
-.openings .Window{
+.openings .Window,
+.openings .Stairs
+{
     stroke: none !important
 }
+
 .openings .Door .Panel,
 .openings .Door .Threshold,
 .openings .Window .Panel,
@@ -183,9 +186,13 @@ body{
 {
     display: none !important;
 }
+
+
 .Column,
 .Misc,
-.Dimension{
+.Dimension,
+.WalkinLine
+{
     display: none !important;
 }
 
