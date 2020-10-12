@@ -245,18 +245,18 @@ body{
 
 /* spaces */
 
-.color .Space.Storage{              fill: #ffa095   }
+.color .Space.Storage{              fill: #ac3f00   }
+.color .Space.Basement{             fill: #a1655d   }
 .color .Space.Garage{               fill: #a65628   }
 .color .Space.TechnicalRoom{        fill: #ff5e00   }
 .color .Space.Office{               fill: #d3a168   }
-.color .Space.CarPort{              fill: #c97500   }
-.color .Space.Entry{                fill: #cf8c00   }
-.color .Space.Entry.Lobby{          fill: #e6ab02   }
-.color .Space.Outdoor{              fill: #c09a03   }
+.color .Space.CarPort{              fill: #ac6400   }
+.color .Space.Entry{                fill: #e6ab02   }
+.color .Space.Outdoor{              fill: #917400   }
 .color .Space.DraughtLobby{         fill: #3f5202   }
 .color .Space.Bar{                  fill: #66a61e   }
 .color .Space.UserDefined{          fill: #1b9e77   }
-.color .Space.RecreationRoom{       fill: #70c7b8   }
+.color .Space.RecreationRoom{       fill: #66b6a9   }
 .color .Space.Library{              fill: #00d2d5   }
 .color .Space.Utility.Laundry{      fill: #9dddff   }
 .color .Space.Bath{                 fill: #80b1d3   }

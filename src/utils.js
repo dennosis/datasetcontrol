@@ -29,6 +29,7 @@ const spacesClasses = [
     '.Space.Bar',
     '.Space.Library',
     '.Space.CarPort',
+    '.Space.Basement',
     '.Space.Undefined',
 ]
 
@@ -360,7 +361,6 @@ export const classesSpace=()=>{
         'Space Office',         
         'Space CarPort',        
         'Space Entry',          
-        'Space Entry Lobby',    
         'Space Outdoor',        
         'Space DraughtLobby',   
         'Space Bar',            
@@ -379,6 +379,7 @@ export const classesSpace=()=>{
         'Space Bedroom',        
         'Space Sauna',          
         'Space Fireplace',
+        'Space Basement'
     ]
 }
 
