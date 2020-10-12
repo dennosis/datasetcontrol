@@ -31,6 +31,7 @@ const spacesClasses = [
     '.Space.CarPort',
     '.Space.Basement',
     '.Space.Undefined',
+    '.Stairs'
 ]
 
 const spaceFurnitures = {
@@ -125,7 +126,7 @@ const getSpaces = (model) => {
                 const {rcx, rcy, horizontally, vertically} = calcPosition(item, model)
                 acumulador.push({
                     class: valorAtual,   
-                    name: (`${valorAtual.replace('.Space.', '')}`).toLowerCase(),
+                    name: (`${valorAtual.replace('Space', '').replaceAll('.', '')}`).toLowerCase(),
                     index, 
                     rcx, 
                     rcy, 
@@ -323,9 +324,6 @@ export const deleteSelectionControls=()=>{
         selectionControl.parentNode.removeChild(selectionControl)
     })
 }
-
-
-
 
 
 
