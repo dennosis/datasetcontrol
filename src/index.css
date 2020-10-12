@@ -172,17 +172,17 @@ body{
 
 /* classes show or hide das items do plano */
 
-.openings .Door,
-.openings .Window,
-.openings .Stairs
+.openings #Model .Door,
+.openings #Model .Window,
+.openings #Model .Stairs
 {
     stroke: none !important
 }
 
-.openings .Door .Panel,
-.openings .Door .Threshold,
-.openings .Window .Panel,
-.openings .Window .Glass
+.openings #Model .Door .Panel,
+.openings #Model .Door .Threshold,
+.openings #Model .Window .Panel,
+.openings #Model .Window .Glass
 {
     display: none !important;
 }
